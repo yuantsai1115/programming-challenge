@@ -52,11 +52,11 @@ The input JSON file should adhere to the following structure:
   },
   ... // more locations
 }
+```
 
 ### Output File Format
 
 The output JSON file will have the following structure:
-
 ```json
 {
   "location_1": [
@@ -74,3 +74,4 @@ The output JSON file will have the following structure:
   ],
   ... // more locations
 }
+```
