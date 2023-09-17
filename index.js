@@ -9,7 +9,7 @@ const endTimeISO = '2023-09-13T00:00:00Z';
     try {
         const data = await readFile('weather.json');
         const weatherData = JSON.parse(data);
-        const dataOutput = await generateLineSeriesData(weatherData, startTimeISO, endTimeISO);
+        const dataOutput = generateLineSeriesData(weatherData, startTimeISO, endTimeISO);
         await writeFile('output.json', dataOutput);
 
         console.log('File written successfully');
