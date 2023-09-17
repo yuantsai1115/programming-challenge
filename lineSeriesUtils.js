@@ -5,10 +5,16 @@ const generateLineSeriesData = (weatherData, start, end) => {
   
     let dataOutput = {};
     for (let location in weatherData) {
+        //preprocess weather data to improve performance
+        const locationData = {};
+        for(let item of weatherData[location]?.hourly || []){
+            locationData[item.dt] = item;
+        }
+
         dataOutput[location] = [];
         for (let i = 0; i < totalDataPoints; i++) {
             let currentTimestamp = initialTimestamp + (i * 3600);
-            let dataExists = weatherData[location]?.hourly.find(item => item.dt === currentTimestamp);
+            let dataExists = locationData[currentTimestamp];
             let dataPoint = createDataPoint(currentTimestamp, dataExists);
             dataOutput[location].push(dataPoint);
         }
